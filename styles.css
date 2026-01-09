@@ -1,0 +1,1298 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@500;700&family=Great+Vibes&display=swap");
+
+:root {
+  /* Colores de fondos por sección */
+  --bg-body: #f3efe9;
+  --bg-hero-top: #c4c9d8;
+  --bg-hero-bottom: #4a4f63;
+  --bg-about: #cad5eb;
+  --bg-3d: #f8dde6;
+  --bg-editorial: #ffe9ef;
+  --bg-rebranding: #f6e7b2;
+  --bg-type: #dde7ff;
+  --bg-fashion: #f3e0cf;
+
+  --paper: #fbf8f3;
+  --paper-soft: #f9f3ea;
+  --paper-shadow: rgba(0, 0, 0, 0.15);
+
+  --text-main: #2f2220;
+  --text-muted: #7e6d68;
+  --text-on-dark: #f6eee5;
+
+  --accent: #c7494b;
+  --accent-soft: #f18986;
+  --accent-blue: #3a6ea3;
+
+  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-script: "Great Vibes", cursive;
+
+  --fs-base: clamp(0.95rem, 0.3vw + 0.9rem, 1.05rem);
+  --fs-sm: clamp(0.8rem, 0.2vw + 0.75rem, 0.9rem);
+  --fs-lg: clamp(1.1rem, 0.6vw + 1rem, 1.4rem);
+  --fs-xl: clamp(1.6rem, 1vw + 1.4rem, 2.3rem);
+  --fs-xxl: clamp(2.8rem, 3vw + 2.6rem, 4rem);
+
+  --radius-card: 1.4rem;
+  --radius-photo: 1rem;
+
+  --header-height: 70px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  background: var(--bg-body);
+  color: var(--text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  padding: 0.5rem 1rem;
+  background: #000;
+  color: #fff;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+/* HEADER */
+
+.site-header {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  height: var(--header-height);
+  padding: 0.8rem 1.5rem;
+  background: rgba(243, 239, 233, 0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  z-index: 20;
+}
+
+.site-nav {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.logo-mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.45);
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fbf5e9;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 1.3rem;
+  padding: 0;
+  margin: 0;
+  font-size: var(--fs-sm);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.nav-list a {
+  position: relative;
+  padding-bottom: 0.2rem;
+}
+
+.nav-list a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background-color: #000;
+  transition: width 0.2s ease;
+}
+
+.nav-list a:hover::after {
+  width: 100%;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+/* LAYOUT GENERAL */
+
+main {
+  padding-top: var(--header-height);
+}
+
+.section {
+  padding: 5rem 1.5rem;
+}
+
+.section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-inner--spread {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2.5rem;
+}
+
+.section-inner--stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.section-inner--center {
+  display: flex;
+  justify-content: center;
+}
+
+/* TARJETAS PAPEL */
+
+.hero-envelope,
+.page,
+.tape-card,
+.lace-card,
+.fabric-card,
+.ribbon-card,
+.contact-card,
+.brand-board,
+.photo-collage,
+.lookbook-row,
+.type-samples,
+.id-card,
+.ticket-card {
+  border-radius: var(--radius-card);
+  background: var(--paper);
+  box-shadow: 0 18px 30px var(--paper-shadow);
+  position: relative;
+}
+
+/* PORTADA / HERO NUEVO */
+
+.hero-section {
+  min-height: calc(100vh - var(--header-height));
+  background: radial-gradient(circle at top left, #dde5f5 0, #c8d6f0 35%, #b7c2e2 65%, #a4adcf 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 1.5rem;
+}
+
+.hero-cover {
+  max-width: 960px;
+  width: 100%;
+  padding: 3.2rem 3rem 2.8rem;
+  background: #fbf7f1;
+  border-radius: 26px;
+  box-shadow: 0 22px 40px rgba(0, 0, 0, 0.2);
+  position: relative;
+  text-align: center;
+}
+
+/* “Desgarro” superior tipo papel */
+.hero-cover::before {
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: 0;
+  right: 0;
+  height: 28px;
+  background:
+    radial-gradient(circle at 10px 24px, rgba(0,0,0,0.12) 0, transparent 28px),
+    repeating-linear-gradient(
+      90deg,
+      #f9e9dc 0,
+      #f9e9dc 12px,
+      #f4dccd 12px,
+      #f4dccd 24px
+    );
+  clip-path: polygon(0 0, 100% 0, 100% 60%, 82% 80%, 60% 65%, 40% 80%, 20% 60%, 0 80%);
+  opacity: 0.9;
+}
+
+/* cinta rosa arriba a la izquierda */
+.hero-cover::after {
+  content: "";
+  position: absolute;
+  top: -18px;
+  left: 40px;
+  width: 120px;
+  height: 22px;
+  background: linear-gradient(90deg, #f9c2d1, #f7a6c0);
+  border-radius: 999px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  transform: rotate(-6deg);
+}
+
+.hero-cover-topline {
+  font-size: var(--fs-sm);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.55);
+  margin-bottom: 0.9rem;
+}
+
+.hero-cover-title {
+  font-family: var(--font-script);
+  font-size: clamp(3.2rem, 6vw, 4.5rem);
+  margin: 0.4rem 0 0.8rem;
+  color: #b64045;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+.hero-cover-subline {
+  font-family: var(--font-serif);
+  font-size: var(--fs-sm);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #71625e;
+  margin: 0 0 2rem;
+}
+
+.hero-cover-name {
+  font-family: var(--font-serif);
+  font-size: var(--fs-base);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #4c4c4c;
+  margin: 0;
+}
+
+/* responsive portada */
+
+@media (max-width: 768px) {
+  .hero-cover {
+    padding: 2.6rem 2.1rem 2.4rem;
+    border-radius: 22px;
+  }
+
+  .hero-cover::after {
+    left: 24px;
+    width: 100px;
+  }
+
+  .hero-cover-subline {
+    letter-spacing: 0.16em;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-cover {
+    padding: 2.4rem 1.6rem 2.2rem;
+  }
+
+  .hero-cover-topline {
+    letter-spacing: 0.22em;
+  }
+}
+
+/* ENCABEZADO CALIGRAFÍA */
+
+.script-heading {
+  font-family: var(--font-script);
+  font-size: var(--fs-xl);
+  margin: 0 0 1.2rem;
+  color: var(--accent);
+}
+
+/* ABOUT: PÁGINA DOBLE AZUL */
+
+.section-about {
+  background: var(--bg-about);
+}
+
+.page {
+  padding: 2.4rem 2.5rem;
+  background: repeating-linear-gradient(
+      0deg,
+      #fbf8f3,
+      #fbf8f3 23px,
+      #f1ece4 23px,
+      #f1ece4 24px
+    );
+}
+
+.page-left--about p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+}
+
+.page-right--about {
+  position: relative;
+}
+/* Tarjeta blanca estilo Behance */
+.id-softcard {
+  margin-top: 1.6rem;
+  background: #ffffff;
+  padding: 1.4rem 1.8rem;
+  border-radius: 14px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  text-align: center;
+}
+
+/* Título estilo script elegante */
+.id-title {
+  font-family: var(--font-script);
+  font-size: 2rem;
+  margin: 0 0 0.6rem;
+  color: #3a6ea3; /* azul estilo CV */
+}
+
+/* Texto en cursiva elegante, como el Behance */
+.id-line {
+  margin: 0.2rem 0;
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  color: #4b4b4b;
+  letter-spacing: 0.5px;
+}
+
+
+.id-card::before {
+  content: "";
+  position: absolute;
+  top: -18px;
+  left: 12px;
+  width: 90px;
+  height: 22px;
+  background: linear-gradient(90deg, #f9d7d0, #f3b4dc);
+  border-radius: 999px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25);
+  transform: rotate(-4deg);
+}
+
+.id-card::after {
+  /* clip plateado */
+  content: "";
+  position: absolute;
+  top: -24px;
+  right: 40%;
+  width: 40px;
+  height: 26px;
+  border-radius: 16px;
+  border: 2px solid rgba(160, 160, 160, 0.9);
+  background: rgba(240, 240, 240, 0.8);
+}
+
+.photo-frame--id img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+
+
+.id-info p {
+  margin: 0.15rem 0;
+  font-size: var(--fs-sm);
+}
+
+.ticket-card {
+  margin-top: 1.8rem;
+  padding: 1.6rem 1.8rem;
+  border-radius: 14px;
+  background: var(--paper-soft);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.16);
+  position: relative;
+}
+
+.ticket-card::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border-radius: 12px;
+  border: 1px dashed rgba(0, 0, 0, 0.2);
+}
+
+.ticket-name {
+  font-family: var(--font-script);
+  font-size: 1.8rem;
+  margin: 0 0 0.8rem;
+  color: var(--accent-blue);
+}
+
+.ticket-card p {
+  margin: 0.15rem 0;
+  font-size: var(--fs-sm);
+}
+
+/* ETIQUETA DE SECCIÓN */
+
+.section-label {
+  max-width: 1100px;
+  margin: 0 auto 1.5rem;
+  font-size: var(--fs-sm);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+/* 3D · TARJETA CON CINTA */
+
+.section-3d {
+  background: var(--bg-3d);
+}
+
+.tape-card {
+  padding: 2.4rem 2.4rem 2.2rem;
+  background: var(--paper-soft);
+}
+
+.tape-card::before,
+.tape-card::after {
+  content: "";
+  position: absolute;
+  width: 110px;
+  height: 26px;
+  background: #ffe5f0;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.tape-card::before {
+  top: -18px;
+  left: 16%;
+  transform: rotate(-6deg);
+}
+
+.tape-card::after {
+  top: -20px;
+  right: 18%;
+  transform: rotate(4deg);
+}
+
+.tape-card p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+}
+
+/* COLLAGE 3D CON RIBBONS */
+
+.photo-collage {
+  padding: 2.3rem 2.2rem 2.2rem;
+}
+
+.photo-collage--ribbons::before {
+  content: "";
+  position: absolute;
+  left: -40px;
+  top: 30%;
+  width: 160px;
+  height: 40px;
+  background: linear-gradient(90deg, #f9b6cf, #fce2f0);
+  border-radius: 999px;
+  transform: rotate(-18deg);
+}
+
+.photo-collage--ribbons::after {
+  content: "";
+  position: absolute;
+  right: -50px;
+  bottom: 18%;
+  width: 180px;
+  height: 40px;
+  background: linear-gradient(90deg, #f8a3b7, #f5cad8);
+  border-radius: 999px;
+  transform: rotate(14deg);
+}
+
+.photo-collage--ribbons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.7rem;
+}
+
+.photo-frame--tilt-left {
+  transform: rotate(-4deg);
+}
+
+.photo-frame--tilt-right {
+  transform: rotate(3deg);
+}
+/* ================================
+   EDITORIAL
+================================ */
+
+/* Columna derecha de editorial (carrusel) centrada */
+.page-right--editorial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* CONTENEDOR carrusel + flechas */
+.editorial-carousel-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 520px;      /* ancho máximo del carrusel */
+  margin-inline: auto;
+  margin-top: 1.5rem;
+}
+
+/* CARRUSEL */
+.editorial-carousel {
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+
+.editorial-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+/* Cada slide ocupa todo el ancho del carrusel */
+.editorial-slide img{
+  object-fit: contain;
+  background: transparent; /* o var(--paper) si quieres un fondo suave */
+}
+
+.editorial-slide{
+  min-width: 100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.editorial-slide img{
+  width: 100%;
+  height: 360px;
+  object-fit: contain;
+}
+
+
+/* FLECHAS SIEMPRE VISIBLES */
+.editorial-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  font-size: 2.2rem;
+  line-height: 1;
+  color: #b64045;
+  cursor: pointer;
+  padding: 0;
+  z-index: 5;
+}
+
+.editorial-arrow--left {
+  left: 8px;
+}
+
+.editorial-arrow--right {
+  right: 8px;
+}
+
+.editorial-arrow:focus {
+  outline: none;
+}
+
+.editorial-arrow:hover {
+  transform: translateY(-50%) scale(1.12);
+}
+
+/* TEXTO "DESARROLLO CREATIVO" DEBAJO, CENTRADO */
+.editorial-more {
+  margin-top: 1.2rem;
+  text-align: center;
+}
+
+.editorial-more-link {
+  text-decoration: none;
+}
+
+.editorial-more-text {
+  font-family: var(--font-script);
+  font-size: 1.8rem;
+  font-style: italic;
+  color: #b64045;
+  opacity: 0.9;
+  transition: 0.25s ease;
+}
+
+.editorial-more-link:hover .editorial-more-text {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+/* responsive */
+@media (max-width: 768px){
+  .editorial-arrow--left { left: -14px; }
+  .editorial-arrow--right { right: -14px; }
+}
+
+
+/* REBRANDING · FONDO MARRÓN + TELA ROJA */
+
+.section-rebranding {
+  background: var(--bg-rebranding);
+  color: var(--text-on-dark);
+}
+
+.section-rebranding .section-label {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.fabric-card {
+  background: #fdf4ec;
+  color: var(--text-main);
+  padding: 2.4rem 2.4rem;
+}
+
+.fabric-card p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+}
+
+.brand-board {
+  margin-top: 0;
+  padding: 2rem 2.1rem 2.3rem;
+  background: #f2e1d5;
+}
+/* REBRANDING · GALERÍA 4 IMÁGENES */
+/* REBRANDING · GALERÍA 2x2 */
+.rebrand-gallery{
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.6rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rebrand-card{
+  background: #fdf4ec;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 16px 32px rgba(0,0,0,0.28);
+  height: 240px; /* MÁS GRANDE */
+  display: flex;
+}
+
+.rebrand-card img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Logo mejor visible */
+.rebrand-card--logo img{
+  object-fit: contain;
+  background: #ffffff;
+  padding: 14px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px){
+  .rebrand-gallery{
+    grid-template-columns: 1fr;
+  }
+
+  .rebrand-card{
+    height: auto;
+  }
+
+  .rebrand-card img{
+    height: auto;
+  }
+}
+
+
+/* Responsive */
+@media (max-width: 1000px){
+  .rebrand-gallery{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .rebrand-card{
+    height: 200px;
+  }
+}
+
+@media (max-width: 520px){
+  .rebrand-gallery{
+    grid-template-columns: 1fr;
+  }
+  .rebrand-card{
+    height: auto;
+  }
+  .rebrand-card img{
+    height: auto;
+  }
+}
+
+.brand-board::before {
+  /* “trozo de tela” rojo */
+  content: "";
+  position: absolute;
+  top: -35px;
+  right: -20px;
+  width: 220px;
+  height: 120px;
+  background: repeating-linear-gradient(
+      90deg,
+      #b01d23,
+      #b01d23 8px,
+      #aa131f 8px,
+      #aa131f 16px
+    );
+  clip-path: polygon(0 0, 100% 0, 95% 100%, 0 85%);
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.4);
+}
+
+.label-strip {
+  padding: 0.9rem 1.4rem;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.26);
+  font-family: var(--font-serif);
+  font-size: var(--fs-lg);
+  color: #b01d23;
+  text-align: center;
+  position: relative;
+}
+
+.label-strip::after {
+  /* clip plateado */
+  content: "";
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  width: 32px;
+  height: 18px;
+  transform: translateY(-50%);
+  border-radius: 999px;
+  border: 2px solid #8c8c8c;
+}
+
+.photo-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.photo-frame--tag {
+  min-height: 140px;
+  background: #f8eee4;
+}
+
+/* TIPOGRAFÍA · PÁGINA DOBLE AZUL CLARITO */
+
+.section-type {
+  background: var(--bg-type);
+}
+
+/* CONTENEDOR TIPO SPREAD DE TIPOGRAFÍA */
+.page-left--type p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+}
+
+.page-right--type {
+  padding: 2.3rem 2.4rem;
+}
+
+.page-right--type p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+}
+
+/* NEVERA DE STICKERS TIPOGRÁFICOS */
+
+.type-fridge {
+  position: relative;
+  margin-top: 2.6rem;
+  margin-bottom: 3rem;
+  min-height: 280px;
+}
+
+/* base de cada sticker */
+.type-sticker {
+  position: absolute;
+  background: transparent;
+  border-radius: 18px;
+  padding: 0;
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.35);
+}
+
+.type-sticker img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+/* CINTA DE CELO GENERAL PARA TODOS LOS STICKERS */
+.type-sticker::before {
+  content: "";
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  width: 80px;
+  height: 26px;
+  transform: translateX(-50%) rotate(-4deg);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.95)
+  );
+  border-radius: 5px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25);
+  opacity: 0.95;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* celo del sticker superior derecha */
+.type-sticker--top-right::before {
+  top: -14px;
+  right: 18%;
+  left: auto;
+  transform: rotate(6deg);
+  width: 70px;
+}
+
+/* celo del sticker inferior izquierda */
+.type-sticker--bottom-left::before {
+  top: -20px;
+  left: 26%;
+  transform: rotate(-10deg);
+  width: 64px;
+}
+
+/* Póster grande en el centro (un poco más pequeño) */
+.type-sticker--big {
+  width: 32%;
+  left: 50%;
+  top: -40px;                 /* sube el cartel */
+  transform: translateX(-50%) rotate(-2deg);
+  position: absolute;
+  z-index: 10;                
+}
+
+
+/* Sticker pequeño arriba a la derecha */
+.type-sticker--top-right {
+  width: 22%;
+  right: 5%;
+  top: 10%;
+  transform: rotate(4deg);
+}
+
+/* Sticker pequeño abajo a la izquierda */
+/* AQUÍ VA LA ESQUINA LEVANTADA */
+.type-sticker--bottom-left {
+  width: 24%;
+  left: 8%;
+  bottom: -18%;
+  transform: rotate(-5deg);
+}
+
+/* sombra extra como esquina levantada */
+.type-sticker--bottom-left::after {
+  content: "";
+  position: absolute;
+  width: 70%;
+  height: 22px;
+  bottom: -10px;
+  right: 6px;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.38),
+    rgba(0, 0, 0, 0)
+  );
+  transform: skewX(-18deg);
+  filter: blur(3px);
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* RESPONSIVE: en móvil se apilan en columna */
+@media (max-width: 900px)
+{
+  .type-fridge {
+    position: static;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+
+  .type-sticker {
+    position: static;
+    width: 100%;
+    transform: rotate(0deg);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+  }
+
+  .type-sticker::before,
+
+.type-sticker--bottom-left {
+  width: 24%;
+  left: 8%;
+  bottom: -18%;
+  transform: rotate(-6deg);
+  position: absolute;
+}
+
+/* Imagen: deformación 3D real */
+.type-sticker--bottom-left img {
+  border-radius: 18px;
+  transform-origin: bottom right;
+  transform: perspective(600px) rotateX(14deg) rotateZ(0deg);
+  box-shadow: 0 18px 28px rgba(0, 0, 0, 0.45);
+  position: relative;
+  z-index: 2;
+}
+
+/* SOMBRA DOBLE: curva + extendida */
+.type-sticker--bottom-left::after {
+  content: "";
+  position: absolute;
+  width: 85%;
+  height: 32px;
+  bottom: -16px;
+  right: 10px;
+  background: radial-gradient(
+    ellipse at bottom right,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0.25) 40%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  filter: blur(4px);
+  opacity: 0.9;
+  transform: rotate(-8deg);
+  z-index: 0;
+}
+
+.type-sticker--bottom-left::before {
+  content: "";
+  position: absolute;
+  bottom: 8px;
+  right: 18px;
+  width: 55px;
+  height: 18px;
+  background: linear-gradient(
+    to right,
+    rgba(255,255,255,0.3),
+    rgba(255,255,255,0),
+    rgba(0,0,0,0.15)
+  );
+  transform: rotate(-12deg);
+  opacity: 0.5;
+  z-index: 3;
+}
+
+
+
+
+/* RESPONSIVE: en móvil en columna */
+@media (max-width: 900px) {
+  .type-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .type-item--poster {
+    grid-row: auto;
+  }
+}
+
+
+.page-left--type p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+}
+
+.page-right--type {
+  padding: 2.3rem 2.4rem;
+}
+
+.type-subtitle {
+  font-family: var(--font-serif);
+  font-size: var(--fs-lg);
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+  color: var(--accent-blue);
+}
+
+.type-list {
+  margin: 0 0 1.5rem 1rem;
+  padding: 0;
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+
+.type-list li {
+  margin-bottom: 0.4rem;
+}
+
+.type-samples {
+  margin-top: 0.5rem;
+  padding: 1.6rem 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+.photo-frame--type {
+  min-height: 120px;
+}
+
+/* MODA · CREMA + LAZO ROJO */
+
+.section-fashion {
+  background: var(--bg-fashion);
+}
+
+.ribbon-card {
+  padding: 2.4rem 2.4rem;
+}
+
+.ribbon-card::before {
+  content: "";
+  position: absolute;
+  left: -40px;
+  top: 50%;
+  width: 260px;
+  height: 34px;
+  background: linear-gradient(90deg, #ce2733, #f06c64);
+  border-radius: 999px;
+  transform: rotate(-12deg) translateY(-50%);
+}
+
+.ribbon-card::after {
+  content: "";
+  position: absolute;
+  right: -40px;
+  top: 55%;
+  width: 210px;
+  height: 32px;
+  background: linear-gradient(90deg, #b71c24, #e3564a);
+  border-radius: 999px;
+  transform: rotate(10deg) translateY(-50%);
+}
+
+.ribbon-card p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+}
+
+.lookbook-row {
+  padding: 2.1rem 2.1rem 2.2rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.6rem;
+}
+
+.photo-frame--look {
+  min-height: 230px;
+}
+
+/* CONTACTO */
+
+.section-contact {
+  background: var(--bg-body);
+}
+
+.contact-card {
+  max-width: 540px;
+}
+
+.contact-card p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+}
+
+.contact-details span {
+  font-weight: 500;
+}
+
+/* FOOTER */
+
+.site-footer{
+  padding: 2.2rem 1.5rem 2.6rem;
+  background: var(--bg-editorial);
+  text-align: center;
+}
+
+.site-footer p{
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+
+.footer-link {
+  text-decoration: underline;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 960px) {
+  .section-inner--spread {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .photo-row,
+  .photo-collage--stacked {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .brand-board::before {
+    right: -10px;
+    top: -28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-header {
+    padding-inline: 1rem;
+  }
+
+  .site-nav {
+    gap: 0.75rem;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-list {
+    position: absolute;
+    right: 1rem;
+    top: calc(var(--header-height) - 0.2rem);
+    flex-direction: column;
+    background: rgba(252, 247, 238, 0.98);
+    padding: 1rem 1.25rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+    display: none;
+  }
+
+  .nav-list.nav-list--open {
+    display: flex;
+  }
+
+  .section {
+    padding: 4rem 1.25rem;
+  }
+
+  .hero-envelope {
+    padding-inline: 1.9rem;
+  }
+
+  .photo-collage--ribbons {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .lookbook-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .type-samples {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 3.5rem 1rem;
+  }
+
+  .hero-envelope {
+    padding: 3rem 1.6rem 2.6rem;
+  }
+
+  .hero-line {
+    flex-direction: column;
+    gap: 0.4rem;
+    align-items: center;
+  }
+
+  .page,
+  .tape-card,
+  .lace-card,
+  .fabric-card,
+  .ribbon-card,
+  .brand-board,
+  .photo-collage,
+  .lookbook-row,
+  .contact-card {
+    padding: 1.8rem 1.6rem;
+  }
+
+  .id-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
